@@ -1,0 +1,17 @@
+{
+  "name": "server-node",
+  "version": "1.0.0",
+  "description": "GET /api/data – Default returns 1 item",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "crypto": "^1.0.1",
+    "express": "^5.1.0"
+  }
+}
