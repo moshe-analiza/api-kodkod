@@ -32,6 +32,10 @@ exports.getData = (req, res) => {
 
 exports.createData = (req, res) => {
   const data = readData();
+  if (!req.body) {
+    return res.status(400).json({ message: 'No data provided or error syntax!' });
+  }
+
   const newItem = req.body;
   data.push(newItem);
   writeData(data);
@@ -45,6 +49,9 @@ exports.updateData = (req, res) => {
 
   if (index === -1) {
     return res.status(404).json({ message: 'Item not found' });
+  }
+  if (!req.body) {
+    return res.status(400).json({ message: 'No data provided or error syntax!' });
   }
 
   data[index] = { ...data[index], ...req.body };
