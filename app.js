@@ -5,7 +5,7 @@ const configRoutes = require('./routes/configRoutes');
 const app = express();
 const PORT = 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use('/api', configRoutes);
 
 app.listen(PORT, () => {
