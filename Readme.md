@@ -101,3 +101,48 @@ This API forwards your request to Gemini using the provided schema and prompt.
 Ensure your Gemini API key is valid and kept secure.
 
 The Gemini API may have rate limits or usage restrictions.
+
+
+gemini client:
+
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+public class GeminiIntelClient
+{
+    private readonly HttpClient _httpClient;
+    private readonly string _apiKey;
+
+    public GeminiIntelClient(string apiKey)
+    {
+        _httpClient = new HttpClient();
+        _apiKey = apiKey;
+    }
+
+    public async Task<string> GetIntelAsync(string prompt)
+    {
+        string url = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={_apiKey}";
+
+        var body = new
+        {
+            contents = new[]
+            {
+                new {
+                    parts = new[] {
+                        new { text = prompt }
+                    }
+                }
+            }
+        };
+
+        var json = JsonSerializer.Serialize(body);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PostAsync(url, content);
+        response.EnsureSuccessStatusCode();
+
+        return await response.Content.ReadAsStringAsync();
+    }
+}

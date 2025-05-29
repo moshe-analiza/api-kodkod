@@ -39,7 +39,7 @@ router.post("/genData", async (req, res) => {
             return res.status(401).json({ error: 'Invalid API key' });
         }
         const geminiOutput = response?.candidates?.[0]?.content?.parts?.[0]?.text;
-        res.json({ result: geminiOutput || 'No content returned from Gemini' });
+        res.json(geminiOutput || 'No content returned from Gemini');
     } catch (error) {
         console.error('Gemini API error:', error.response?.data || error.message);
         res.status(500).json({ error: 'Failed to generate content from Gemini' });
