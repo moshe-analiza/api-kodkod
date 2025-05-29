@@ -78,21 +78,21 @@ Example cURL Request
 
 curl -X POST https://api-kodkod.onrender.com/api/genData
   -H "Content-Type: application/json" \
-  -d '{
-    "schema": {
-      "type": "ARRAY",
-      "items": {
-        "type": "OBJECT",
-        "properties": {
-          "name": { "type": "STRING" },
-          "codeName": { "type": "STRING" }
+  -d "{
+    \"schema\": {
+      \"type\": \"ARRAY\",
+      \"items\": {
+        \"type\": \"OBJECT\",
+        \"properties\": {
+          \"name\": { \"type\": \"STRING\" },
+          \"codeName\": { \"type\": \"STRING\" }
         }
       },
-      "propertyOrdering": ["name", "codeName"]
+      \"propertyOrdering\": [\"name\", \"codeName\"]
     },
-    "api_key": "your-gemini-api-key",
-    "prompt": "Generate a list of commanders with names and code names."
-  }'
+    \"api_key\": \"your-gemini-api-key\",
+    \"prompt\": \"Generate a list of commanders with names and code names.\"
+  }"
 
 
 Notes
