@@ -35,7 +35,7 @@ exports.createData = (req, res) => {
   if (!req.body) {
     return res.status(400).json({ message: 'No data provided or error syntax!' });
   }
-
+  
   const newItem = req.body;
   data.push(newItem);
   writeData(data);
